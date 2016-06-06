@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var _ = require('underscore');
 var async = require('async');
 var sleep = require('sleep');

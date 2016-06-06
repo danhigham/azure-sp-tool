@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var _ = require('underscore');
 var profile = require('azure-cli/lib/util/profile');
 var utils = require('azure-cli/lib/util/utils');

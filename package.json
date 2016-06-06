@@ -1,6 +1,6 @@
 {
-  "name": "azure-tool",
-  "version": "1.0.0",
+  "name": "azure-sp-tool",
+  "version": "1.0.1",
   "description": "A tool, for azure!",
   "main": "main.js",
   "directories": {
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danhigham/azure-tool.git"
+    "url": "git+https://github.com/danhigham/azure-sp-tool.git"
   },
   "keywords": [
     "azure"
@@ -33,7 +33,7 @@
     "azure-sp-tool-create-sp": "index-create-sp.js"
   },
   "bugs": {
-    "url": "https://github.com/danhigham/azure-tool/issues"
+    "url": "https://github.com/danhigham/azure-sp-tool/issues"
   },
-  "homepage": "https://github.com/danhigham/azure-tool#readme"
+  "homepage": "https://github.com/danhigham/azure-sp-tool#readme"
 }
