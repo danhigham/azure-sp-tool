@@ -1,0 +1,39 @@
+{
+  "name": "azure-tool",
+  "version": "1.0.0",
+  "description": "A tool, for azure!",
+  "main": "main.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "dependencies": {
+    "azure-cli": "*",
+    "underscore": "*",
+    "async": "*",
+    "sleep": "*",
+    "commander": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danhigham/azure-tool.git"
+  },
+  "keywords": [
+    "azure"
+  ],
+  "author": "Dan Higham",
+  "license": "ISC",
+  "bin": {
+    "azure-sp-tool": "index.js",
+    "azure-sp-tool-show-quota": "index-show-quota.js",
+    "azure-sp-tool-create-sp": "index-create-sp.js"
+  },
+  "bugs": {
+    "url": "https://github.com/danhigham/azure-tool/issues"
+  },
+  "homepage": "https://github.com/danhigham/azure-tool#readme"
+}
