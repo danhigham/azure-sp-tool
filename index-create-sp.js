@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 var _ = require('underscore');
 var async = require('async');
-var sleep = require('sleep');
 var fs = require('fs');
 
 var profile = require('azure-cli/lib/util/profile');

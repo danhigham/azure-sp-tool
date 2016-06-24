@@ -1,6 +1,6 @@
 {
   "name": "azure-sp-tool",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tool, for azure!",
   "main": "main.js",
   "directories": {
