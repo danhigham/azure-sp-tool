@@ -65,6 +65,47 @@ var keyUsage = 'Verify';
 
 var client = utils.createGraphManagementClient(defaultSub);
 
+function assignContribRole (clientId, sp, first, callback) {
+
+  if (first) process.stdout.write("Assigning contributor role.");
+
+  var authzClient = rbacClients.getAuthzClient(defaultSub);
+
+  var scope = RoleAssignments.buildScopeString({
+    subscriptionId: defaultSub.id,
+  });
+
+  authzClient.roleDefinitions.list(
+    scope,
+    { roleName: 'Contributor' },
+    function(err, roles) {
+
+      var parameter = {
+        properties: {
+          principalId: sp.objectId,
+          roleDefinitionId: roles.roleDefinitions[0].id,
+          scope: scope
+        }
+      };
+
+      var roleAssignmentNameGuid = utils.uuidGen();
+      authzClient.roleAssignments.create(scope, roleAssignmentNameGuid, parameter, function (err, assignment) {
+
+        process.stdout.write(".");
+
+        if (err !== null) {
+          setTimeout (function() {
+            assignContribRole (clientId, sp, false, callback);
+          }, 5000);
+        } else {
+          process.stdout.write(" done\n");
+          callback(clientId, sp, assignment, false);
+        }
+      });
+    }
+  );
+}
+
 async.waterfall([
   function(callback) {
     process.stdout.write("Creating application...")
@@ -80,44 +121,10 @@ async.waterfall([
       appId: clientId
     }, function(err, sp, resp) {
       process.stdout.write(" done\n")
-      callback(null, clientId, sp);
+      callback(null, clientId, sp, true);
     });
   },
-  function(clientId, sp, callback) {
-    process.stdout.write("Sleeping...")
-
-    sleep.sleep(30);
-    process.stdout.write(" done\n")
-
-    process.stdout.write("Assigning contributor role...")
-    var authzClient = rbacClients.getAuthzClient(defaultSub);
-
-    var scope = RoleAssignments.buildScopeString({
-      subscriptionId: defaultSub.id,
-    });
-
-    authzClient.roleDefinitions.list(
-      scope,
-      { roleName: 'Contributor' },
-      function(err, roles) {
-
-        var parameter = {
-          properties: {
-            principalId: sp.objectId,
-            roleDefinitionId: roles.roleDefinitions[0].id,
-            scope: scope
-          }
-        };
-
-        var roleAssignmentNameGuid = utils.uuidGen();
-        authzClient.roleAssignments.create(scope, roleAssignmentNameGuid, parameter, function (err, assignment) {
-          process.stdout.write(" done\n")
-          callback(null, clientId, sp, assignment);
-        });
-      }
-    );
-
-  }
+  assignContribRole
 ], function(err, clientId, sp, assignment) {
 
   var output = {
