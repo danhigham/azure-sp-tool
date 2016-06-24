@@ -1,6 +1,6 @@
 {
   "name": "azure-sp-tool",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A tool, for azure!",
   "main": "main.js",
   "directories": {
@@ -10,6 +10,7 @@
   "dependencies": {
     "azure-cli": "*",
     "underscore": "*",
+    "moment": "*",
     "async": "*",
     "commander": "*"
   },
