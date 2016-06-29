@@ -109,6 +109,10 @@ async.waterfall([
   function(callback) {
     process.stdout.write("Creating application...")
     client.applicationOperations.create(appParams, function(err, app, resp) {
+      if (err !== null) {
+        process.stdout.write("ERROR: " + err + "\n");
+          callback(err, null);
+      }
       process.stdout.write(" done\n")
       callback(null, app.appId);
     });
@@ -119,6 +123,12 @@ async.waterfall([
       accountEnabled: true,
       appId: clientId
     }, function(err, sp, resp) {
+
+      if (err !== null) {
+        process.stdout.write("ERROR: " + err + "\n");
+          callback(err, null, null);
+      }
+
       process.stdout.write(" done\n")
       callback(null, clientId, sp, true);
     });
@@ -135,7 +145,7 @@ async.waterfall([
 
   fs.writeFile("./azure-credentials.json", JSON.stringify(output, null, 4), function(err) {
     if(err) {
-        return console.log(err);
+      return console.log(err);
     }
 
     console.log("Credentials written to azure-credentials.json");
