@@ -111,10 +111,11 @@ async.waterfall([
     client.applicationOperations.create(appParams, function(err, app, resp) {
       if (err !== null) {
         process.stdout.write("ERROR: " + err + "\n");
-          callback(err, null);
+        callback(err, null);
+      } else {
+        process.stdout.write(" done\n")
+        callback(null, app.appId);
       }
-      process.stdout.write(" done\n")
-      callback(null, app.appId);
     });
   },
   function(clientId, callback) {
@@ -126,11 +127,11 @@ async.waterfall([
 
       if (err !== null) {
         process.stdout.write("ERROR: " + err + "\n");
-          callback(err, null, null);
+        callback(err, null, null);
+      } else {
+        process.stdout.write(" done\n")
+        callback(null, clientId, sp, true);
       }
-
-      process.stdout.write(" done\n")
-      callback(null, clientId, sp, true);
     });
   },
   assignContribRole
