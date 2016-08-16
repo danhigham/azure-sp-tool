@@ -140,7 +140,7 @@ async.waterfall([
   var output = {
     subscriptionID: defaultSub.id,
     tenantID: defaultSub.tenantId,
-    clientID: clientId,
+    clientID: clientId.appId,
     clientSecret: password
   };
 
