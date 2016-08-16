@@ -11,16 +11,14 @@ Install Azure CLI. For Linux/Unix/Mac OS X, follow these [instructions](https://
 Installation
 ------------
 
-* npm install azure-sp-tool -g
+* `npm install azure-sp-tool -g`
 
 
 Create Service Principal
 ------------
 
-* azure login
+* `azure login` - First login to your azure account
 
-* azure-sp-tool -help
+* `azure account list` - Make sure your desired subscription is set to default
 
-* azure-sp-tool create-sp - service principal is outputed in azure-credentials.json file
-
-* azure account list
+* `azure-sp-tool create-sp` - Service principal is output to azure-credentials.json file
