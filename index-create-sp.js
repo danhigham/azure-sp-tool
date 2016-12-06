@@ -108,7 +108,7 @@ function assignContribRole (clientId, sp, first, callback) {
 async.waterfall([
   function(callback) {
     process.stdout.write("Creating application...")
-    client.applicationOperations.create(appParams, function(err, app, resp) {
+    client.applications.create(appParams, function(err, app, resp) {
       if (err !== null) {
         process.stdout.write("ERROR: " + err + "\n");
         callback(err, null);
@@ -120,7 +120,7 @@ async.waterfall([
   },
   function(clientId, callback) {
     process.stdout.write("Creating service principal...")
-    client.servicePrincipalOperations.create({
+    client.servicePrincipals.create({
       accountEnabled: true,
       appId: clientId
     }, function(err, sp, resp) {

@@ -8,7 +8,7 @@
     "test": "test"
   },
   "dependencies": {
-    "azure-cli": "0.10.0",
+    "azure-cli": "0.10.7",
     "underscore": "*",
     "moment": "*",
     "async": "*",
