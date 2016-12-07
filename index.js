@@ -8,7 +8,7 @@ var subscriptions = profile.current.subscriptions;
 var defaultSub = _.find(subscriptions, function(s) { return s.isDefault === true; })
 
 azureTool
-  .version('0.1.0')
+  .version('1.0.9')
   .option('-s, --subscription [id]', 'Subscription ID (default: '+ defaultSub.id +')', defaultSub.id)
   .command('show-quota [region]', 'Show CPU quota for a given region')
   .command('create-sp', 'Create a service principal')
